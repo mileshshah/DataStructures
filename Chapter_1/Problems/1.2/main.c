@@ -68,14 +68,18 @@ bool findMatch(char** matrix, char *word, int x, int y, int wordIndex, int sizeO
 
 bool wordExists(char** matrix, char* word, int wordLength, int wordPuzzleLength)
 {
-	for(int i = 0; i < wordPuzzleLength - 1; i++)
+	for(int i = 0; i < wordPuzzleLength; i++)
 	{
-		for(int j = i + 1; j < wordPuzzleLength; j++)
+		for(int j = 0; j < wordPuzzleLength; j++)
 		{
 			if(*(*(matrix+i)+j) == *word)
 			{
 				bool wordFound = findMatch(matrix, word, i, j, 0, wordPuzzleLength, wordLength);
-				return wordFound;
+				if(wordFound == true)
+				{
+					return wordFound;
+				}
+			
 			}
 		}
 	}
